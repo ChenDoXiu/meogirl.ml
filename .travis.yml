@@ -1,55 +1,26 @@
-# 指定构建环境是Node.js，当前版本是稳定版
-anguage: node_js
-node_js: stable
-
-env:
- global:
-   - URL_REPO: github.com/ChenDoXiu/meogirl.ml
-
-# 设置钩子只检测blog-source分支的push变动
+os: linux
+language: node_js 
+node_js:
+  - 10  # 使用 nodejs LTS v10
 branches:
   only:
-    - main
-
-# 设置缓存文件
+    - main # 只监控 main 的 branch
 cache:
   directories:
-    - node_modules
+    - node_modules # 缓存 node_modules 加快构建速度
+before_script: ## 根据你所用的主题和自定义的不同，这里会有所不同
+  - npm install -g hexo-cli # 在 CI 环境内安装 Hexo
+  - npm install # 在根目录安装站点需要的依赖 
+script: 
+  - hexo generate # generate static files
+deploy: # 根据个人情况，这里会有所不同
+  provider: pages
+  skip_cleanup: true # 构建完成后不清除
+  token: $GH_TOKEN # 你刚刚设置的 token
+  keep_history: true # 保存历史
+  fqdn: meogirl.ml # 自定义域名，使用 username.github.io 可删除
+  on:
+    branch: main # hexo 站点源文件所在的 branch
+  local_dir: public 
+  target_branch: master # 存放生成站点文件的 branch，使用 username.github.io 必须是 master
 
-#在构建之前安装hexo环境
-before_install:
-  - npm install -g hexo-cli
-
-#安装git插件和搜索功能插件
-install:
-  - npm install
-
-  # 设置git提交名，邮箱；替换真实token到_config.yml文件
-before_script:
-  - git config user.name "ChenDoXiu"
-  - git config user.email "2839673621@qq.com"
-  # 替换同目录下的_config.yml文件中github_token字符串为travis后台刚才配置的变量，注>意此处sed命令用了双引号。单引号无效！
-  - sed -i "s/github_token/${GH_TOKEN}/g" _config.yml || exit 1
-
-# 执行清缓存，生成网页操作
-script:
-  - hexo clean
-  - hexo generate
-  - echo ${ENV_TEST}
-  - hexo deploy
-
-# configure notifications (email, IRC, campfire etc)
-# please update this section to your needs!
-# https://docs.travis-ci.com/user/notifications/
-notifications:
-  email:
-    - 2839673621@qq.com
-  on_success: change
-  on_failure: always
-deploy:
-- type: git
-  #repo: git@github.com:Michael728/michael728.github.io.git
-  #下方的gh_token会被.travis.yml中sed命令替换
-  repo: https://gh_token@github.com/ChenDoXiu/meogirl.ml
-
-  branch: master
