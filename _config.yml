@@ -102,6 +102,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git,
-  reop: https://github.com/ChenDoXiu/meogirl.ml.git,
-  branch: blog
+  type: git
+  repo: https://github.com/ChenDoXiu/meogirl.ml
+  # example, https://github.com/hexojs/hexojs.github.io
+  branch: gh-pages
