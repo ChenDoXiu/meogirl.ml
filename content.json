@@ -1,1 +1,1 @@
-{"pages":[],"posts":[{"title":"你好世界","text":"第一篇上传的blog","link":"/2021/03/16/hello-world/"}],"tags":[],"categories":[]}
+{"pages":[{"title":"文章分类","text":"","link":"/categories/index.html"},{"title":"标签","text":"","link":"/tags/index.html"}],"posts":[{"title":"access","text":"test1","link":"/2021/03/16/Access2010/1/"}],"tags":[{"name":"access","slug":"access","link":"/tags/access/"}],"categories":[{"name":"access","slug":"access","link":"/categories/access/"}]}
