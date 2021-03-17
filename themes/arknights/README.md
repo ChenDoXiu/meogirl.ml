@@ -7,7 +7,7 @@
 - ### **Dr.Yue_plus: <http://ark.theme.yueplus.ink/>**
 - **Dr.Ye: <https://laurenfrost.github.io/>**
 - **Dr.LingYun: <https://dr-lingyun.gitee.io/>**
-- **Dr.XIMU：<http://b.ligzs.cn/>**
+- **Dr.hastin: <http://hastin-blog.cn/>**
 
 如果使用了这个主题，欢迎在这儿贴预览链接~
 
@@ -207,24 +207,6 @@ wrong_hash_message: 与 Rhodes Island™ 效验口令失败，当前使用临时
 ---
 ```
 -->
-
-## Front-matter
-
-除了 Hexo 支持的 [Front-matter](https://hexo.io/zh-cn/docs/front-matter)
-
-还支持：
-
-```yaml
-# 文章页右上角发布/更新日期
-post-info: true/false
-
-# 侧边栏的目录
-post-index: true/false
-
-# 打赏框
-reward: true/false
-```
-
 ## 参与开发
 ### 开发人员
 - [Yue_plus](https://github.com/Yue-plus)

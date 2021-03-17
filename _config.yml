@@ -3,17 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: DoXiu's blog
+title: Hexo
 subtitle: ''
 description: ''
 keywords:
-author: ChenDoXiu
-language: zh-CN
+author: Yue_plus
+language: en
 timezone: ''
 
 # URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: http://example.com
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -40,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: false
 relative_link: false
 future: true
 highlight:
@@ -101,3 +102,5 @@ theme: arknights
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ''
