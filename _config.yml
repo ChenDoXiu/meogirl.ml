@@ -97,12 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: amazing 
+theme: arknights
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://github.com/ChenDoXiu/meogirl.ml
-  # example, https://github.com/hexojs/hexojs.github.io
-  branch: gh-pages
