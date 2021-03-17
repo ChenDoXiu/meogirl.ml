@@ -12,7 +12,6 @@ aside:
   block_in_top: false # 目前为侧边栏文章目录置顶
   copyright: # 版权声明、备案号等
     ©: 1970 to 2020
-    ICP: 
 
 # post 文章页面配置；true / false
 post:
