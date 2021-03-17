@@ -32,8 +32,8 @@ archives:
 
 # Valine 无后端评论系统
 valine:
-  app_id: # <APP ID>
-  app_key: # <APP KEY>
+  app_id: 6SB5OsciMQ5tkvTl0GyiUWmb-gzGzoHsz
+  app_key: DcEF8qgxKFUIhiYsvfNOhE2x
 
 # 图表支持
 mermaid: false
