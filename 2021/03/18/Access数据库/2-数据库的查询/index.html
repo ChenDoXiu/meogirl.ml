@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>二、SQL的查询 | ChenDoXiu'Blog</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/mermaid/8.8.2/mermaid.min.js"></script><script>mermaid.initialize({
+  startOnLoad: true
+  , theme: 'dark'
+});</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-03-18T00:00:00.000Z" id="date"> 2021-03-18</time></span><br><span>updated:<time datetime="2021-03-18T04:04:06.990Z" id="updated"> 2021-03-18</time></span></div><h1>二、SQL的查询</h1><hr></div><div id="post-content"><h1 id="关于分号"><a href="#关于分号" class="headerlink" title="关于分号"></a>关于分号</h1><blockquote>
+<p>一条SQL语句结束，结尾必须加分号 ( ; )</p>
+</blockquote>
+<p>如果在结尾没有加分号的话，一般认为该语句没有结束。</p>
+<p>正因如此，SQL语句可以换行增加可读性，不会产生语法错误</p>
+<h1 id="本节的数据表"><a href="#本节的数据表" class="headerlink" title="本节的数据表"></a>本节的数据表</h1><blockquote>
+<p>这里列出了本节的教程中出现的所有数据表</p>
+</blockquote>
+<p>表名：学生表</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>名称</th>
+<th>年龄</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>20</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小张</td>
+<td>21</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小红</td>
+<td>21</td>
+<td>二班</td>
+</tr>
+</tbody></table>
+<h1 id="完整语法"><a href="#完整语法" class="headerlink" title="完整语法"></a>完整语法</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">DISTINCT</span>] [TOP n] 字段列表</span><br><span class="line">[<span class="keyword">FROM</span> 数据源]</span><br><span class="line">[<span class="keyword">WHERE</span> 条件]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span> 分组表达式]</span><br><span class="line">[<span class="keyword">HAVING</span> 条件]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span> 排序项 <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h1><p>要查询数据库表的数据，我们使用如下的SQL语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 数据表名称;</span><br></pre></td></tr></table></figure>
+
+<p>在字段列表使用<code>*</code>号匹配所有的字段<br>此语句可以查询出数据表中的所有记录，例如以下数据表</p>
+<p>当我们执行以下语句时，表中的所有数据都会被查询出来：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 学生表;</span><br></pre></td></tr></table></figure>
+<p> 查询结果：</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>名称</th>
+<th>年龄</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>20</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小张</td>
+<td>21</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小红</td>
+<td>21</td>
+<td>二班</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="投影查询"><a href="#投影查询" class="headerlink" title="投影查询"></a>投影查询</h1><p>在某些时候，我们并不想要列出所有的字段列，我们可能只想要知道学生的名字和班级，我们就可以使用投影查询：</p>
+<p>基本语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>例如，这节开头提到的例子，就可以使用以下SQL来实现</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 名称,班级 <span class="keyword">FROM</span> 学生表;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查询结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>小张</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>小红</td>
+<td>二班</td>
+</tr>
+</tbody></table>
+<h1 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h1><p>如果想对查询添加一些条件，比如想要查询年龄为21岁或者名字叫小红的记录，就得使用条件查询</p>
+<p>语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 条件表达式;</span><br></pre></td></tr></table></figure>
+<p>例如查询班级是一班的学生姓名，可以构造以下的SQL语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 姓名,班级 <span class="keyword">FROM</span> 学生表 <span class="keyword">WHERE</span> 班级 <span class="operator">=</span> &quot;一班&quot;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：值如果是字符串类型，需要加上双引号( “ )</p>
+</blockquote>
+<p>执行结果：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>小张</td>
+<td>一班</td>
+</tr>
+</tbody></table>
+<h1 id="高级条件查询"><a href="#高级条件查询" class="headerlink" title="高级条件查询"></a>高级条件查询</h1><p>这一节将介绍高级的条件查询来满足更多的需求</p>
+<h2 id="AND运算符"><a href="#AND运算符" class="headerlink" title="AND运算符"></a>AND运算符</h2><p>可以用<code>&lt;条件1&gt; AND &lt;条件2&gt;</code>表达满足条件1并且满足条件2。</p>
+<p>例如筛选出年龄20岁的的一班学生，可以使用以下语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 学生表 <span class="keyword">WHERE</span> 年龄 <span class="operator">=</span> <span class="number">20</span> <span class="keyword">AND</span> 班级 <span class="operator">=</span> 一班;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>名称</th>
+<th>年龄</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>20</td>
+<td>一班</td>
+</tr>
+</tbody></table>
+<h2 id="OR运算符"><a href="#OR运算符" class="headerlink" title="OR运算符"></a>OR运算符</h2><p>使用<code>&lt;条件1&gt; OR &lt;条件2&gt;</code>来表达满足条件1或者条件2，两个条件仅需要满足一个</p>
+<p>例如筛选出年龄为20岁或者是一班的学生，可以使用以下语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 学生表 <span class="keyword">WHERE</span> 年龄 <span class="operator">=</span> <span class="number">20</span> <span class="keyword">OR</span> 班级 <span class="operator">=</span> 一班;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>名称</th>
+<th>年龄</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小明</td>
+<td>20</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>2</td>
+<td>小张</td>
+<td>21</td>
+<td>一班</td>
+</tr>
+</tbody></table>
+<h2 id="NOT运算符"><a href="#NOT运算符" class="headerlink" title="NOT运算符"></a>NOT运算符</h2><p>使用<code>NOT 表达式</code>来表示不符合该条件的记录<br>例如筛选出不是20岁的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 学生表 <span class="keyword">WHERE</span> <span class="keyword">NOT</span> 年龄 <span class="operator">=</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>名称</th>
+<th>年龄</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>小张</td>
+<td>21</td>
+<td>一班</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小红</td>
+<td>21</td>
+<td>二班</td>
+</tr>
+</tbody></table>
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2021/03/17/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">一、数据库基础 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
+ el: '#Valine'
+ , appId: '6SB5OsciMQ5tkvTl0GyiUWmb-gzGzoHsz'
+ , appKey: 'DcEF8qgxKFUIhiYsvfNOhE2x'
+ , placeholder: '此条评论委托企鹅物流发送'
+})</script></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/"> Dr.ChenDoXiu</a></h1><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">2</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">2</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">1</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="post-index"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%88%86%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">关于分号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E8%8A%82%E7%9A%84%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">本节的数据表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">完整语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">基本查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">投影查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">6.</span> <span class="toc-text">条件查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">7.</span> <span class="toc-text">高级条件查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AND%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.1.</span> <span class="toc-text">AND运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OR%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.2.</span> <span class="toc-text">OR运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NOT%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.3.</span> <span class="toc-text">NOT运算符</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2020</span></nobr><wbr><wbr><nobr>published with&nbsp;<a target="_blank" rel="noopener" href="http://hexo.io">Hexo&nbsp;</a></nobr><wbr><nobr>Theme&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight&nbsp;</a></nobr><wbr><nobr>by&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script></body></html>
