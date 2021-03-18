@@ -1,10 +1,13 @@
 # hexo-theme-arknights
 
 ## 多国语言Readme  
+
 [日本語バージョン](README-Ja.md)  
 
 ## 预览
+
 - ### **Dr.Yue_plus: <http://ark.theme.yueplus.ink/>**
+
 - **Dr.Ye: <https://laurenfrost.github.io/>**
 - **Dr.LingYun: <https://dr-lingyun.gitee.io/>**
 - **Dr.hastin: <http://hastin-blog.cn/>**
@@ -13,12 +16,14 @@
 
 ![主题预览图片](./demo.png)
 
-
 ## 安装
+
 ### [一键下载](https://github.com/Yue-plus/hexo-theme-arknights/releases)
 
 ## 手动安装
+
 根据需要执行以下代码
+
 ```shell script
 hexo init Hexo
 cd Hexo
@@ -28,31 +33,41 @@ git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights
 ```
 
 ### 安装依赖
+
 npm 用户：
-```shell script 
+
+```shell script
 cnpm install hexo-server hexo-browsersync hexo-renderer-pug hexo-renderer-sass hexo-renderer-ts --save
 ```
+
 yarn 用户：
+
 ```shell script
 yarn add hexo-server hexo-browsersync hexo-renderer-pug hexo-renderer-sass hexo-renderer-ts
 ```
+
 > `hexo-renderer-sass` 很可能会安装失败，请多试几次。
 
 ### 修改配置文件
+
 - 参照 [Hexo 官网](https://hexo.io/zh-cn/docs/configuration) 修改 `Hexo/` 目录下的 `_config.yml`。
-    - 把 `theme:` 的值改为 `arknights`
-    - 开启代码高亮：
+  - 把 `theme:` 的值改为 `arknights`
+  - 开启代码高亮：
+
       ```yml
       highlight:
         hljs: true
       ```
+
 - 查看 `Hexo/themes/arknights/`目录下的 `_config.yml`。
   > 建议参考：[使用代替主题配置文件](https://hexo.io/zh-cn/docs/configuration#%E4%BD%BF%E7%94%A8%E4%BB%A3%E6%9B%BF%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
   
   主题的配置文件可参照中文注释修改。
 
 ### 修改资源文件
+
 可按需修改 `Hexo/themes/arknights/source/` 目录下的
+
 - `favicon.ico`：浏览器标签页上的图标
 - `CNAME`: GitHub Pages 部署时的自定义域名
 - `README.md`: 部署仓库的 README
@@ -60,9 +75,11 @@ yarn add hexo-server hexo-browsersync hexo-renderer-pug hexo-renderer-sass hexo-
   1:1 比例的 `png` 图片；
 
 ## 写作
+
 - 可参考 [Hexo | 写作](https://hexo.io/zh-cn/docs/writing)。
 - 在主题仓库的 Hexo 分支有一些[示例文本](https://github.com/Yue-plus/hexo-theme-arknights/tree/hexo/source/_posts)可以取用
 - 添加文章标签与分类，更多特性可参考 [Hexo | Front-matter](https://hexo.io/zh-cn/docs/front-matter) ，示例：
+
   ```markdown
   ---
   title: 'Hello World !'
@@ -71,23 +88,29 @@ yarn add hexo-server hexo-browsersync hexo-renderer-pug hexo-renderer-sass hexo-
   category: Example
   ---
   ```
+
 - 在 `<!-- more -->` 之前的内容称之为摘要，会显示在首页上，并且可以设置是否也在正文显示。
 
 ## 顶部导航栏新建自定义页面
+
 - 例如：新建一个 `about` 页面
   在 `Hexo` 目录下执行
+
   ```shell script
   hexo new page 'about'
   ```
+
   然后 `Hexo/source/` 目录下会多一个 `about` 文件夹
 - 编辑 `Hexo/source/about/index.md` 文件
 - 编辑主题目录下的 `_config.yml`，添加一个链接：
+
   ```yml
   menu:
     About: /about
   ```
 
 ## 评论系统
+
 本主题支持[Valine](https://valine.js.org/) 。
 请修改主题目录下 `_config.yml` 文件中 `valine:` 的 `app_id:` 与 `app_key:` 。
 
@@ -96,6 +119,7 @@ yarn add hexo-server hexo-browsersync hexo-renderer-pug hexo-renderer-sass hexo-
 开启邮件提醒：[zhaojun1998 / Valine-Admin](https://github.com/zhaojun1998/Valine-Admin)
 
 ## 数学公式
+
 使用 [hexo-filter-mathjax](https://github.com/next-theme/hexo-filter-mathjax) Hexo 过滤器来显示数学公式：
 
 1. 在 Hexo 目录下执行以下指令：
@@ -120,6 +144,7 @@ mathjax:
 ```
 
 3. 在需要启用 mathjax 的文章的 [Front-matter](https://hexo.io/zh-cn/docs/front-matter) 区内添加 `mathjax: true`：
+
 ```markdown
 ---
 title: On the Electrodynamics of Moving Bodies
@@ -128,9 +153,11 @@ date: 1905-06-30 12:00:00
 mathjax: true
 ---
 ```
+
 然后，就可以在文章中使用 LaTeX 语法。
 
 4. 需要注意，内联数学公式（…… `$<数学公式>$` ……）在开头 `$` 之后和结尾 `$` 之前不能有空格！例如：
+
 ```diff
 -$ \epsilon_0 $
 +$\epsilon_0$
@@ -139,6 +166,7 @@ mathjax: true
 ```
 
 5. 需要注意 LaTeX 与 Markdown 语法之间的冲突。如有必要，请使用 `\` 进行转义：
+
 ```diff
 -$\epsilon_0$
 +$\epsilon\_0$
@@ -155,6 +183,7 @@ mathjax: true
 主题通过 mermaid-js 绘制各种图表。**[查看示例](https://ark.theme.yueplus.ink/mermaid/)**
 
 支持：
+
 - [流程图](https://ark.theme.yueplus.ink/mermaid/#%E6%B5%81%E7%A8%8B%E5%9B%BE)
 - [序列图](https://ark.theme.yueplus.ink/mermaid/#%E5%BA%8F%E5%88%97%E5%9B%BE)
 - [类图](https://ark.theme.yueplus.ink/mermaid/#%E7%B1%BB%E5%9B%BE)
@@ -207,14 +236,18 @@ wrong_hash_message: 与 Rhodes Island™ 效验口令失败，当前使用临时
 ---
 ```
 -->
+
 ## 参与开发
+
 ### 开发人员
+
 - [Yue_plus](https://github.com/Yue-plus)
 - [Laurenfrost](https://github.com/Laurenfrost)
 
 > 欢迎提交 [Issues](https://github.com/Yue-plus/hexo-theme-arknights/issues/new) 与 [PR](https://github.com/Yue-plus/hexo-theme-arknights/pulls)
 
 ### 分支说明
+
 | 分支     | 说明                                           |
 | -------- | ---------------------------------------------- |
 | master   | 主题开发目录                                   |
@@ -222,7 +255,9 @@ wrong_hash_message: 与 Rhodes Island™ 效验口令失败，当前使用临时
 | hexo     | Hexo 目录，这里有可以用于测试主题的 `.md` 文件 |
 
 ### 搭建开发环境
+
 先装好 [nodejs](https://nodejs.org/) 和 [yarn](https://classic.yarnpkg.com/zh-Hans/) ，然后执行以下命令：
+
 ```shell script
 yarn global add hexo-cli yo generator-hexo-theme
 git clone -b hexo https://github.com/Yue-plus/hexo-theme-arknights.git
@@ -233,7 +268,9 @@ hexo serve --debug
 ```
 
 ### 开发中可能遇见的 BUG 及解决方法
-#### 修改 `.pug` 模板文件无法自动刷新页面。
+
+#### 修改 `.pug` 模板文件无法自动刷新页面
+
 解决方法：将 Hexo 目录下的
 `./node_modules/hexo-renderer-pug/lib/pug.js`
 中的
@@ -241,10 +278,12 @@ hexo serve --debug
 注释掉。
 
 #### 运行 ‘hexo serve --debug’ 时，长文章渲染不全
+
 这是由热重载插件 `hexo-browsersync` 导致的，不会影响发布
 解决方法：禁用该插件。（反正不影响发布，不管也行）
 
 #### 参与开发可能需要的文档
+
 - [Hexo 官方文档](https://hexo.io/zh-cn/docs/templates)
 - [SASS 中文网](https://www.sass.hk/guide/)
   > 注意，这个中文网标的是 SASS 但写的是 SCSS 的语法。
@@ -252,6 +291,7 @@ hexo serve --debug
 - [Pug 模板引擎中文文档](https://www.pugjs.cn/api/getting-started.html)
 
 - 另外引用几个大佬的blog
+  >
   > - <https://easyhexo.com/>
   > - [让 Hexo 搭建的博客支持 LaTeX](http://cps.ninja/2019/03/16/hexo-with-latex/)
   > - [Hexo主题开发 - ﹏猴子请来的救兵 - 博客园](https://www.cnblogs.com/yyhh/p/11058985.html)
@@ -259,14 +299,17 @@ hexo serve --debug
   > - 【墙】[Hexo 主题开发指南 | Peak Xin's Blog](https://xinyufeng.net/2019/04/15/hexo-theme-guide/)
 
 ## 支援主题开发
+
 喜欢这个主题的话可以：
+
 - 给颗小星星吧 `(/▽＼)`
+  >
   > - √ `ヾ(✿ﾟ▽ﾟ)ノ` 100star 做个新主题哦~
   > - 新主题开发中 [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
+  >
 - 开发者的B服ID：`YuePlus#6221`
 - 加入 QQ 群：618221514
     > 群内开发为主，吹水晒卡，分享线索7也都欢迎哦~ `d=====(￣▽￣*)b`
 - 打赏、赞助:
 
 ![收款二维码](./support.jpg)
-    
