@@ -8,7 +8,7 @@
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-03-18T00:00:00.000Z" id="date"> 2021-03-18</time></span><br><span>updated:<time datetime="2021-03-18T13:12:46.336Z" id="updated"> 2021-03-18</time></span></div><h1>三、SQL的查询</h1><hr></div><div id="post-content"><h2 id="关于分号"><a href="#关于分号" class="headerlink" title="关于分号"></a>关于分号</h2><blockquote>
+}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-03-19T00:00:00.000Z" id="date"> 2021-03-19</time></span><br><span>updated:<time datetime="2021-03-19T00:16:55.474Z" id="updated"> 2021-03-19</time></span></div><h1>三、SQL的查询</h1><hr></div><div id="post-content"><h2 id="关于分号"><a href="#关于分号" class="headerlink" title="关于分号"></a>关于分号</h2><blockquote>
 <p>一条SQL语句结束，结尾必须加分号 ( ; )</p>
 </blockquote>
 <p>如果在结尾没有加分号的话，一般认为该语句没有结束。</p>
@@ -223,7 +223,7 @@
 <p>结果：<br>| 学号 | 名称 | 年龄 | 班级 |<br>| —- | —- | —- | —- |<br>| 1    | 小明 | 20   | 一班 |<br>| 3    | 小红 | 21   | 二班 |</p>
 <h4 id="你知道吗"><a href="#你知道吗" class="headerlink" title="你知道吗"></a>你知道吗</h4><p>其实in的功能和or一样，但是代码更短，上述的代码也可以等价成：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> 学生表 <span class="hljs-keyword">WHERE</span> 姓名 <span class="hljs-operator">=</span> &quot;小红&quot; <span class="hljs-keyword">OR</span> 姓名 <span class="hljs-operator">=</span> &quot;小明&quot;;<br></code></pre></td></tr></table></figure>
-<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">← Prev 二、数据库的数据类型</a><span style="color: #fe2"> | </span><a href="/2021/03/17/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">一、数据库基础 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">二、数据库的数据类型 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
  el: '#Valine'
  , appId: '6SB5OsciMQ5tkvTl0GyiUWmb-gzGzoHsz'
  , appKey: 'DcEF8qgxKFUIhiYsvfNOhE2x'
