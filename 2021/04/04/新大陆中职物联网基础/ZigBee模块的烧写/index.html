@@ -8,20 +8,20 @@
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-04-04T14:07:00.000Z" id="date"> 2021-04-04</time></span><br><span>updated:<time datetime="2021-04-04T11:59:45.918Z" id="updated"> 2021-04-04</time></span></div><h1>ZigBee模块的烧写</h1><hr></div><div id="post-content"><h2 id="1、连接电源和仿真器"><a href="#1、连接电源和仿真器" class="headerlink" title="1、连接电源和仿真器"></a>1、连接电源和仿真器</h2><p><img src="image/2.jpg" alt="连接图"></p>
-<p><img src="image/6.jpg" alt="复位按钮"></p>
+}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-04-04T14:07:00.000Z" id="date"> 2021-04-04</time></span><br><span>updated:<time datetime="2021-04-04T15:20:20.767Z" id="updated"> 2021-04-04</time></span></div><h1>ZigBee模块的烧写</h1><hr></div><div id="post-content"><h2 id="1、连接电源和仿真器"><a href="#1、连接电源和仿真器" class="headerlink" title="1、连接电源和仿真器"></a>1、连接电源和仿真器</h2><p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/2.jpg" alt="连接图"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/6.jpg" alt="复位按钮"></p>
 <h2 id="2、烧写传感器"><a href="#2、烧写传感器" class="headerlink" title="2、烧写传感器"></a>2、烧写传感器</h2><h3 id="2-1、安装-SmartRF-Flash-Programmer"><a href="#2-1、安装-SmartRF-Flash-Programmer" class="headerlink" title="2-1、安装 SmartRF Flash Programmer"></a>2-1、安装 <em>SmartRF Flash Programmer</em></h3><p>软件描述</p>
 <blockquote>
 <p><code>SmartRF Flash Programmer</code> 用于ZigBee开发的工具软件，利用bootloader重新给CCDebug烧录程序的专用工具，用于烧写HEX文件的工具，修复CCDebug。能自动识别CC2530系列芯片，可以实现对CC2530的Flash读写。</p>
 </blockquote>
 <p>打开 <strong>Setup_SmartRFProgr_1.10.2.exe</strong></p>
 <p>根据软件提示完成安装：</p>
-<p><img src="image/3.png" alt="文件夹截图"></p>
-<p><img src="image/4.png" alt="软件截图"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/3.png" alt="文件夹截图"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/4.png" alt="软件截图"></p>
 <h3 id="2-2、烧写-Zigbee-模块"><a href="#2-2、烧写-Zigbee-模块" class="headerlink" title="2-2、烧写 Zigbee 模块"></a>2-2、烧写 Zigbee 模块</h3><p>软件安装完成之后，可以在桌面找到如下图标,让我们双击打开它：</p>
-<p><img src="image/5.png" alt="图标"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/5.png" alt="图标"></p>
 <p>打开之后就出现了以下界面：</p>
-<p><img src="image/7.png" alt="界面介绍"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/7.png" alt="界面介绍"></p>
 <h4 id="2-2-1、软件的一般使用步骤"><a href="#2-2-1、软件的一般使用步骤" class="headerlink" title="2-2-1、软件的一般使用步骤"></a>2-2-1、软件的一般使用步骤</h4><blockquote>
 <p>1、 当打开软件之后，正常情况下可以识别到设备，如果设备列表里什么也没有，<strong>请检查单片机电源、仿真器是否完整连接</strong>，如果都没问题，那么<strong>请按下仿真器的复位按钮</strong>试试吧</p>
 <p>2、 选择要烧写的hex文件，文件的后缀是以<code>.hex</code>结尾的</p>
@@ -29,9 +29,9 @@
 <p>4、 按下<code>Perform actions</code>按钮进行烧写吧</p>
 </blockquote>
 <p>等待hex文件烧写完成<br>如果出现进度条上面的 <strong>OK</strong> 字样，恭喜你烧录成功了</p>
-<p><img src="image/8.png" alt="烧写成功"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/8.png" alt="烧写成功"></p>
 <h4 id="2-2-2、错误的处理情况"><a href="#2-2-2、错误的处理情况" class="headerlink" title="2-2-2、错误的处理情况"></a>2-2-2、错误的处理情况</h4><p>如果你非常不幸，出现了这样的情况</p>
-<p><img src="image/9.png" alt="烧写失败"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/9.png" alt="烧写失败"></p>
 <p>那就按照以下步骤进行检查</p>
 <blockquote>
 <p>1、看看软件上面的设备列表有没有检测到设备<br>2、按下仿真器上的复位按钮<br>3、有没有选择正确的 <strong>.hex</strong> 文件<br>4、设备有没有连接好电源，仿真器的<strong>指示灯</strong>亮了吗？<br>5、重新插一下设备试试<br>6、换一台电脑试试<br>7、可能是东西坏了，换一个</p>
@@ -41,7 +41,7 @@
 <p>遇事不决，量子力学</p>
 </blockquote>
 <h2 id="3、HEX文件说明"><a href="#3、HEX文件说明" class="headerlink" title="3、HEX文件说明"></a>3、HEX文件说明</h2><p>新大陆公司给我们提供了<strong>3</strong>个hex文件<br>分别是以下3个，它们的作用如下</p>
-<p><img src="image/10.png" alt="hex代码"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/10.png" alt="hex代码"></p>
 <blockquote>
 <p>collector.hex：协调器烧写代码 <strong>波特率：38400</strong><br>Sensor Route.hex：传感器 <strong>所有的ZigBee传感器都需要烧写此文件 波特率38400</strong><br>relay.hex：继电器烧写代码 <strong>带串口网关功能 9600波特率,可控制LED屏</strong></p>
 </blockquote>
@@ -64,20 +64,20 @@
 <p>我这里<del>复制</del>了一堆，那这玩意到底有什么用呢？</p>
 <p>简单的说，串口就是用来<strong>传输数据</strong>的，比如我们的ZigBee组网，我们用串口把组网需要的信息（比如 信道号 和 PAN ID ）传输给<strong>ZigBee单片机</strong>，来实现组网。</p>
 <h3 id="4-3、ZigBee组网工具"><a href="#4-3、ZigBee组网工具" class="headerlink" title="4-3、ZigBee组网工具"></a>4-3、ZigBee组网工具</h3><p>首先我们打开工具，就是这货：</p>
-<p><img src="image/15.png" alt="组网工具"></p>
-<p>打开之后长这样<br><img src="image/16.png" alt="组网工具截图"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/15.png" alt="组网工具"></p>
+<p>打开之后长这样<br><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/16.png" alt="组网工具截图"></p>
 <h4 id="4-3-1-串口的选择"><a href="#4-3-1-串口的选择" class="headerlink" title="4-3-1 串口的选择"></a>4-3-1 串口的选择</h4><p>通常在安装的时候，我们肯定会连接许多的串口设备，打开设备管理器的时候，一大堆COM口映入眼帘。。。。</p>
-<p><img src="image/17.png" alt="一堆串口"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/17.png" alt="一堆串口"></p>
 <p><del>(这其实是算少的了，串口数量比这还要多)</del></p>
 <p>那么，如何在这一大堆串口中，找到单片机所属的串口呢？</p>
 <p>最简单的方法就是：<br>拔掉一个串口线，看看设备管理器里面哪一个串口消失了，那便是对应的串口</p>
 <h3 id="4-3-2-设置传感器参数"><a href="#4-3-2-设置传感器参数" class="headerlink" title="4-3-2 设置传感器参数"></a>4-3-2 设置传感器参数</h3><p>选择好对应的串口，波特率设置成要求的大小（第三章有说），点击<strong>连接模组</strong>，连接成功后设置好对应的信道号和 PAN ID 以及传感器参数，点击<strong>设置</strong>就完成了</p>
 <h3 id="4-4-协调器-传感器组网"><a href="#4-4-协调器-传感器组网" class="headerlink" title="4-4 协调器-传感器组网"></a>4-4 协调器-传感器组网</h3><p>首先我们拿出一个协调器，连上电源和仿真器</p>
 <h4 id="4-4-1-协调器和仿真器连接方式"><a href="#4-4-1-协调器和仿真器连接方式" class="headerlink" title="4-4-1 协调器和仿真器连接方式"></a>4-4-1 协调器和仿真器连接方式</h4><p>协调器是这个黑色的板子<br>连接方式看图</p>
-<p><img src="image/11.jpg" alt="协调器1"></p>
-<p><img src="image/12.jpg" alt="协调器1"></p>
-<p><img src="image/13.jpg" alt="协调器1"></p>
-<p><img src="image/14.jpg" alt="协调器1"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/11.jpg" alt="协调器1"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/12.jpg" alt="协调器1"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/13.jpg" alt="协调器1"></p>
+<p><img src="/2021/04/04/%E6%96%B0%E5%A4%A7%E9%99%86%E4%B8%AD%E8%81%8C%E7%89%A9%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80/ZigBee%E6%A8%A1%E5%9D%97%E7%9A%84%E7%83%A7%E5%86%99/14.jpg" alt="协调器1"></p>
 <h4 id="4-4-2-协调器的烧写"><a href="#4-4-2-协调器的烧写" class="headerlink" title="4-4-2 协调器的烧写"></a>4-4-2 协调器的烧写</h4><p>此处略，按照 2-2 的方法烧录 <code>collector2.3.hex</code> 文件</p>
 <p>待续。。。</p>
 <div id="paginator"></div></div><div id="post-footer"><hr><a href="/2021/03/19/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/">三、SQL的查询 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
