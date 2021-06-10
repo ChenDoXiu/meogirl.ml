@@ -172,7 +172,11 @@ var editor = ace.edit("editor");
     editor.setTheme("ace/theme/twilight");
     editor.session.setMode("ace/mode/json");
 var time = document.getElementById("time")
+try{
     var a = new MfunsDanMaku()
+}catch(e){
+alert(e)
+}
     a.main({
         containers: document.getElementById("body"),
         danmaku: (send) => {
