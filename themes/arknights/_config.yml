@@ -11,7 +11,7 @@ aside:
   dr: / # 侧边栏 Dr. 链接
   block_in_top: false # 目前为侧边栏文章目录置顶
   copyright: # 版权声明、备案号等
-    ©: 1970 to 2020
+    ©: 1970 to 2021
 
 # post 文章页面配置；true / false
 post:
@@ -40,11 +40,11 @@ mermaid: true
 
 # main menu navigation
 menu:
-  Home: ''
+  首页: ''
 #  About: about/
 #  Contact: contact/
-  Archives: archives/
-
+  归档: archives/
+  弹幕实验室: "lab.meogirl.ml"
 # stylesheets loaded in the <head>
 stylesheets:
 - https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css
