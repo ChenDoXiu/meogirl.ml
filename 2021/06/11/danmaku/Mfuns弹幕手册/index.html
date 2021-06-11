@@ -8,7 +8,7 @@
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">首页</a><a href="/archives/">归档</a><a href="/lab.meogirl.ml">弹幕实验室</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-06-11T00:00:00.000Z" id="date"> 2021-06-11</time></span><br><span>updated:<time datetime="2021-06-11T06:39:00.281Z" id="updated"> 2021-06-11</time></span></div><h1>Mfuns高级弹幕手册</h1><hr></div><div id="post-content"><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>Mfuns的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：<a target="_blank" rel="noopener" href="https://www.runoob.com/json/json-syntax.html">菜鸟教程 - JSON 语法</a>。</p>
+}</style><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">首页</a><a href="/archives/">归档</a><a href="/lab.meogirl.ml">弹幕实验室</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-06-11T00:00:00.000Z" id="date"> 2021-06-11</time></span><br><span>updated:<time datetime="2021-06-11T06:42:15.213Z" id="updated"> 2021-06-11</time></span></div><h1>Mfuns高级弹幕手册</h1><hr></div><div id="post-content"><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>Mfuns的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：<a target="_blank" rel="noopener" href="https://www.runoob.com/json/json-syntax.html">菜鸟教程 - JSON 语法</a>。</p>
 <h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><p>弹幕文件是由 JSON 文件组成，基本的格式为：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>    &#123;<br>        <span class="hljs-comment">//单个弹幕。。。</span><br>    &#125;,<br>    &#123;<br>        <span class="hljs-comment">//单个弹幕。。。</span><br>    &#125;<br>    <span class="hljs-comment">//。。。</span><br>]<br></code></pre></td></tr></table></figure>
 
@@ -17,7 +17,53 @@
 <p>因此，弹幕作者并不需要去考虑弹幕大小对于屏幕的适配问题，可放心的使用绝对像素值对内容进行描述与定位</p>
 <h3 id="弹幕基本格式"><a href="#弹幕基本格式" class="headerlink" title="弹幕基本格式"></a>弹幕基本格式</h3><p>一个弹幕的基本组成内容如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;text&quot;</span>,<br>    <span class="hljs-attr">&quot;start&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;content&quot;</span>:<span class="hljs-string">&quot;danmaku&quot;</span>,<br>    <span class="hljs-attr">&quot;style&quot;</span>:&#123;&#125;,<br>    <span class="hljs-attr">&quot;animations&quot;</span>:[],<br>    <span class="hljs-attr">&quot;child&quot;</span>:[]<br>&#125;,<br></code></pre></td></tr></table></figure>
-<p>接下来我将对其一一介绍：<br>| 属性       | 可选     | 内容       | 备注                                            |<br>| ———- | ——– | ———- | ———————————————– |<br>| type       | 必须存在 | text       | 弹幕类型，目前仅有text                          |<br>| start      | 必须存在 | 数字       | 弹幕开始时间（毫秒）                            |<br>| content    | 必须存在 | 文本       | 弹幕内容                                        |<br>| style      | 可选     | 弹幕样式   | 直接应用css的样式（小驼峰命名）                 |<br>| animations | 可选     | 动画列表   | 作用于弹幕的动画                                |<br>| child      | 可选     | 弹幕子元素 | 子元素也是一个完整的弹幕，但是start属性不能使用 |</p>
+<p>接下来我将对其一一介绍：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>可选</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>必须存在</td>
+<td>text</td>
+<td>弹幕类型，目前仅有text</td>
+</tr>
+<tr>
+<td>start</td>
+<td>必须存在</td>
+<td>数字</td>
+<td>弹幕开始时间（毫秒）</td>
+</tr>
+<tr>
+<td>content</td>
+<td>必须存在</td>
+<td>文本</td>
+<td>弹幕内容</td>
+</tr>
+<tr>
+<td>style</td>
+<td>可选</td>
+<td>弹幕样式</td>
+<td>直接应用css的样式（小驼峰命名）</td>
+</tr>
+<tr>
+<td>animations</td>
+<td>可选</td>
+<td>动画列表</td>
+<td>作用于弹幕的动画</td>
+</tr>
+<tr>
+<td>child</td>
+<td>可选</td>
+<td>弹幕子元素</td>
+<td>子元素也是一个完整的弹幕，但是start属性不能使用</td>
+</tr>
+</tbody></table>
 <blockquote>
 <p>注意：弹幕内的所有属性，注意分清是大括号还是中括号，如果括号错误，弹幕无法解析<br>每个属性结尾，如果有下一个属性，不要忘记加逗号</p>
 </blockquote>
