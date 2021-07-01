@@ -93,9 +93,13 @@ html(lang=config.language)
           nobr by&nbsp;
             a(href='https://github.com/Yue-plus') Yue_plus
           br
-          span(id='busuanzi_container_page_pv') 本站访问量
-            span(id='busuanzi_value_page_pv')
-            span 次
+          span(id='busuanzi_container_site_pv',style='display:none') Site visited&nbsp;
+            span(id='busuanzi_value_site_pv')
+            span &nbsp;times
+          br
+          span(id='busuanzi_container_site_uv',style='display:none') Total&nbsp;
+            span(id='busuanzi_value_site_uv')
+            span people
     if theme.canvas_dust
       canvas#canvas-dust
     script(src=config.root + "js/arknights.js")
