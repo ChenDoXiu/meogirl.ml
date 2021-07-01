@@ -8,7 +8,7 @@
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><script async="" data-ad-client="ca-pub-2710993749840463" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">首页</a><a href="/archives/">归档</a><a href="/https://lab.meogirl.ml">弹幕实验室</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-06-11T00:00:00.000Z" id="date"> 2021-06-11</time></span><br><span>updated:<time datetime="2021-07-01T01:28:05.195Z" id="updated"> 2021-07-01</time></span><br><span id="busuanzi_container_page_pv" style="display:none">Page visited&nbsp;<span id="busuanzi_value_page_pv"></span><span>&nbsp;times</span></span></div><h1>Mfuns高级弹幕手册</h1><hr></div><div id="post-content"><blockquote>
+}</style><script async="" data-ad-client="ca-pub-2710993749840463" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">首页</a><a href="/archives/">归档</a><a href="/https://lab.meogirl.ml">弹幕实验室</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-06-11T00:00:00.000Z" id="date"> 2021-06-11</time></span><br><span>updated:<time datetime="2021-07-01T01:35:34.434Z" id="updated"> 2021-07-01</time></span><br><span id="busuanzi_container_page_pv" style="display:none">Page visited&nbsp;<span id="busuanzi_value_page_pv"></span><span>&nbsp;times</span></span></div><h1>Mfuns高级弹幕手册</h1><hr></div><div id="post-content"><blockquote>
 <p>当前版本 ：1.1.0beta</p>
 </blockquote>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>Mfuns的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：<a target="_blank" rel="noopener" href="https://www.runoob.com/json/json-syntax.html">菜鸟教程 - JSON 语法</a>。</p>
@@ -137,7 +137,41 @@
 <blockquote>
 <p>1.1.0更新透明度动画</p>
 </blockquote>
-<p>目前支持的复杂动画类型有<br>| 动画名称 | type类型  | 描述                   | 内部属性                          |<br>| ——– | ——— | ———————- | ——————————— |<br>|组动画|group|组动画将多个基本动画放进一个组中，实现并行播放|<code>animations:[]</code>|<br>|列表动画|list|列表动画将对多个动画依次播放|<code>animations:[]</code>|<br>|重复动画|repeat|重复执行某个动画n次|<code>repeat:number</code>,<code>animations:[]</code>|<br>目前，所有的复制动画类型均可嵌套其他复杂动画类型，组成更复杂的动画</p>
+<p>目前支持的复杂动画类型有</p>
+<table>
+<thead>
+<tr>
+<th>动画名称</th>
+<th>type类型</th>
+<th>描述</th>
+<th>内部属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组动画</td>
+<td>group</td>
+<td>组动画将多个基本动画放进一个组中，实现并行播放</td>
+<td><code>animations:[]</code></td>
+</tr>
+<tr>
+<td>列表动画</td>
+<td>list</td>
+<td>列表动画将对多个动画依次播放</td>
+<td><code>animations:[]</code></td>
+</tr>
+<tr>
+<td>重复动画</td>
+<td>repeat</td>
+<td>重复执行某个动画n次</td>
+<td><code>repeat:number</code>,<code>animations:[]</code></td>
+</tr>
+<tr>
+<td>目前，所有的复制动画类型均可嵌套其他复杂动画类型，组成更复杂的动画</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <p>例如，现在要实现一个基本的移动动画，我们依旧拿上一个弹幕作为例子，我们再此基础上加上 <code>animations</code> 属性：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs json"><br>[<br>    &#123;<br>        <span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;text&quot;</span>,<br>        <span class="hljs-attr">&quot;start&quot;</span>:<span class="hljs-number">0</span>,<br>        <span class="hljs-attr">&quot;content&quot;</span>:<span class="hljs-string">&quot;这是一段40像素的红色文本&quot;</span>,<br>        <span class="hljs-attr">&quot;style&quot;</span>:&#123;<br>            <span class="hljs-attr">&quot;fontSize&quot;</span>:<span class="hljs-string">&quot;40px&quot;</span>,<br>            <span class="hljs-attr">&quot;color&quot;</span>:<span class="hljs-string">&quot;red&quot;</span><br>        &#125;,<br>        <span class="hljs-attr">&quot;animations&quot;</span>: [<br>            &#123;<br>                <span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;translate&quot;</span>,<br>                <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-number">3000</span>,<br>                <span class="hljs-attr">&quot;path&quot;</span>:&#123;<br>                    <span class="hljs-attr">&quot;x1&quot;</span>:<span class="hljs-number">100</span>,<br>                    <span class="hljs-attr">&quot;y1&quot;</span>:<span class="hljs-number">100</span>,<br>                    <span class="hljs-attr">&quot;x2&quot;</span>:<span class="hljs-number">1000</span>,<br>                    <span class="hljs-attr">&quot;y2&quot;</span>:<span class="hljs-number">600</span><br>                &#125;<br>            &#125;,<br>            &#123;<br>                <span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;translate&quot;</span>,<br>                <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-number">3000</span>,<br>                <span class="hljs-attr">&quot;path&quot;</span>:&#123;<br>                    <span class="hljs-attr">&quot;x2&quot;</span>:<span class="hljs-number">-100</span>,<br>                    <span class="hljs-attr">&quot;y2&quot;</span>:<span class="hljs-number">-200</span><br>                &#125;<br>            &#125;<br>        ]<br>    &#125;<br>]<br></code></pre></td></tr></table></figure>
 <p><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=move">点我运行一下</a></p>
