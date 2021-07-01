@@ -47,6 +47,7 @@ html(lang=config.language)
       |  src: local('JetBrains Mono'), url('#{config.root}font/JetBrainsMono-Regular.woff2') format('woff2');
       |}
     script(async='',data-ad-client="ca-pub-2710993749840463", src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+    script(async='',src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js") 
   body
     header
       nav
@@ -91,6 +92,10 @@ html(lang=config.language)
           wbr
           nobr by&nbsp;
             a(href='https://github.com/Yue-plus') Yue_plus
+          br
+          span(id='busuanzi_container_page_pv') 本站访问量
+            span(id='busuanzi_value_page_pv')
+            span 次
     if theme.canvas_dust
       canvas#canvas-dust
     script(src=config.root + "js/arknights.js")
