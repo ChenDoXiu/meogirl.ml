@@ -4,7 +4,9 @@ date: 2021/6/11
 tags: mfuns,高级弹幕
 category: 高级弹幕
 ---
->当前版本 ：1.1.0beta
+>文档当前版本 ：1.1.3beta
+
+弹幕实验室地址：[弹幕实验室](https://lab.meogirl.ml)
 
 ## 入门
 
@@ -182,3 +184,4 @@ Mfuns的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，
 [带曲线动画的文字移动](https://lab.meogirl.ml/index.html)
 [红色方块移动](https://lab.meogirl.ml/index.html?id=movecube)
 [立方体旋转](https://lab.meogirl.ml/index.html?id=cuberrr)
+[Windows98窗口(需要1.1.3以上版本)](https://lab.meogirl.ml/index.html?id=windows)

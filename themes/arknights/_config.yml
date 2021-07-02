@@ -44,7 +44,7 @@ menu:
 #  About: about/
 #  Contact: contact/
   归档: archives/
-  弹幕实验室: "https://lab.meogirl.ml"
+  弹幕文档: "2021/06/11/danmaku/Mfuns弹幕手册/"
 # stylesheets loaded in the <head>
 stylesheets:
 - https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css
