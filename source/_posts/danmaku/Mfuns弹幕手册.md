@@ -1,6 +1,7 @@
 ---
 title: Mfuns高级弹幕手册
-date: 2021/9/2
+date: 2021/6/11
+update: 2021/9/2
 tags: mfuns,高级弹幕
 category: 高级弹幕
 ---
@@ -9,7 +10,7 @@ category: 高级弹幕
 
 弹幕实验室地址：
 [弹幕实验室(已停止维护)](https://lab.meogirl.ml)
-[弹幕实验室(新版)](https://lab.meogirl.ml)
+[弹幕实验室(新版)](https://labv2.meogirl.ml)
 
 ## 入门
 
