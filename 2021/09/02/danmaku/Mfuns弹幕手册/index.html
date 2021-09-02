@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mfuns高级弹幕手册 | ChenDoXiu'Blog</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/mermaid/8.8.2/mermaid.min.js"></script><script>mermaid.initialize({
+  startOnLoad: true
+  , theme: 'dark'
+});</script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><script async="" data-ad-client="ca-pub-2710993749840463" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"> </script><meta name="generator" content="Hexo 5.4.0"></head><body><header><nav><a href="/">首页</a><a href="/archives/">归档</a><a href="/2021/06/11/danmaku/Mfuns弹幕手册/">弹幕文档</a></nav></header><main><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2021-09-02T00:00:00.000Z" id="date"> 2021-09-02</time></span><br><span>updated:<time datetime="2021-09-02T08:16:03.900Z" id="updated"> 2021-09-02</time></span><br><span id="busuanzi_container_page_pv" style="display:none">Page visited&nbsp;<span id="busuanzi_value_page_pv"></span><span>&nbsp;times</span></span></div><h1>Mfuns高级弹幕手册</h1><hr></div><div id="post-content"><blockquote>
+<p>文档当前版本 ：1.7.0beta</p>
+</blockquote>
+<p>弹幕实验室地址：<br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/">弹幕实验室(已停止维护)</a><br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/">弹幕实验室(新版)</a></p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>Mfuns 的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：<a target="_blank" rel="noopener" href="https://www.runoob.com/json/json-syntax.html">菜鸟教程 - JSON 语法</a>。</p>
+<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><p>弹幕文件是由 JSON 文件组成，基本的格式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-comment">//单个弹幕。。。</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-comment">//单个弹幕。。。</span><br>  &#125;<br>  <span class="hljs-comment">//。。。</span><br>]<br></code></pre></td></tr></table></figure>
+
+<p>所有的弹幕，最外层由 <code>[]</code> 英文半角状态的中括号包裹，单个弹幕以 <code>&#123;&#125;</code> 大括号包裹。</p>
+<h3 id="舞台"><a href="#舞台" class="headerlink" title="舞台"></a>舞台</h3><p>此弹幕引擎的舞台的大小比例固定为 16:9，其逻辑分辨率为 <del>1600:900</del>,1920:1080(1.1.0 更新，修改了舞台分辨率大小) ,会根据屏幕的大小自动进行缩放。</p>
+<p>因此，弹幕作者并不需要去考虑弹幕大小对于屏幕的适配问题，可放心的使用绝对像素值对内容进行描述与定位</p>
+<h3 id="弹幕基本格式"><a href="#弹幕基本格式" class="headerlink" title="弹幕基本格式"></a>弹幕基本格式</h3><p>一个弹幕的基本组成内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;text&quot;</span>,<br>    <span class="hljs-attr">&quot;start&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;id&quot;</span>:<span class="hljs-string">&quot;id&quot;</span>,<br>    <span class="hljs-attr">&quot;extends&quot;</span>:<span class="hljs-string">&quot;id&quot;</span>,<br>    <span class="hljs-attr">&quot;then&quot;</span>:<span class="hljs-string">&quot;id&quot;</span>,<br>    <span class="hljs-attr">&quot;x&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;y&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;z&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;duration&quot;</span>:<span class="hljs-number">1000</span>,<br>    <span class="hljs-attr">&quot;delay&quot;</span>:<span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;content&quot;</span>:<span class="hljs-string">&quot;danmaku&quot;</span>,<br>    <span class="hljs-attr">&quot;style&quot;</span>:&#123;&#125;,<br>    <span class="hljs-attr">&quot;animations&quot;</span>:[],<br>    <span class="hljs-attr">&quot;child&quot;</span>:[]<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+<p>接下来我将对其一一介绍：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>可选</th>
+<th>内容</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>可选</td>
+<td>text</td>
+<td>弹幕类型，目前仅有 text</td>
+</tr>
+<tr>
+<td>start</td>
+<td>必须存在</td>
+<td>数字</td>
+<td>弹幕开始时间（毫秒）优先级比 then 更高</td>
+</tr>
+<tr>
+<td>content</td>
+<td>必须存在</td>
+<td>文本</td>
+<td>弹幕内容</td>
+</tr>
+<tr>
+<td>style</td>
+<td>可选</td>
+<td>弹幕样式</td>
+<td>直接应用 css 的样式（小驼峰命名）</td>
+</tr>
+<tr>
+<td>animations</td>
+<td>可选</td>
+<td>动画列表</td>
+<td>作用于弹幕的动画</td>
+</tr>
+<tr>
+<td>child</td>
+<td>可选</td>
+<td>弹幕子元素</td>
+<td>子元素也是一个完整的弹幕，但是 start 属性不能使用</td>
+</tr>
+<tr>
+<td>x,y,z</td>
+<td>可选</td>
+<td>数字</td>
+<td>设置弹幕的坐标 当 animations 中 存在内容时将会被覆盖</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>可选</td>
+<td>数字</td>
+<td>弹幕存活时间 当 animations 中 存在内容时将会被覆盖</td>
+</tr>
+<tr>
+<td>id</td>
+<td>可选</td>
+<td>文本</td>
+<td>设置弹幕的 id，可以在其他地方引用</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>可选</td>
+<td>文本</td>
+<td>继承一个弹幕属性，内容为已经设置的 id，可以使用 <code>_LAST_</code> 引用上一条</td>
+</tr>
+<tr>
+<td>then</td>
+<td>可选</td>
+<td>文本</td>
+<td>在一条弹幕结束之后，播放此弹幕 内容为 id，可以使用 <code>_LAST_</code> 引用上一条</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>可选</td>
+<td>数字</td>
+<td>延迟播放毫秒数，使用负数将会提前播放</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：弹幕内的所有属性，注意分清是大括号还是中括号，如果括号错误，弹幕无法解析<br>每个属性结尾，如果有下一个属性，不要忘记加逗号</p>
+</blockquote>
+<h3 id="弹幕类型"><a href="#弹幕类型" class="headerlink" title="弹幕类型"></a>弹幕类型</h3><p>当前仅有文本弹幕( type 属性为 <code>text</code> )，以后或许会开发出其他类型的弹幕（比如 SVG ）</p>
+<h3 id="弹幕生命周期"><a href="#弹幕生命周期" class="headerlink" title="弹幕生命周期"></a>弹幕生命周期</h3><p>一条弹幕的完整生命周期由开始时间到结束时间，弹幕的开始时间由 <code>start</code> 属性设置，单位时间为毫秒。弹幕的结束时间由动画时长进行控制，其长度为动画的时长</p>
+<h3 id="弹幕的样式"><a href="#弹幕的样式" class="headerlink" title="弹幕的样式"></a>弹幕的样式</h3><p>目前弹幕样式可以直接使用 CSS 的大部分常用样式，如果你没有接触过网页，也不知道 CSS 是什么，不用担心，这并不会影响到弹幕的使用。</p>
+<p>您可以从这里找到有关于样式的全部属性 <a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css-reference.html">菜鸟教程 - CSS 参考手册</a></p>
+<p>例如：</p>
+<p>我们希望让弹幕的字体为 40px，并且为红色，我们从上面链接中的参考手册中找到设置字体大小的属性为 <code>font-size</code> 我们将横线去掉，其转换成首字母小写的驼峰命名：<code>fontSize</code>，这便是弹幕中 <code>style</code> 属性的成员之一，同理，我们再找到设置字体颜色的属性 <code>color</code>，最后得出以下弹幕：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;text&quot;</span>,<br>    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;content&quot;</span>: <span class="hljs-string">&quot;这是一段40像素的红色文本&quot;</span>,<br>    <span class="hljs-attr">&quot;style&quot;</span>: &#123;<br>      <span class="hljs-attr">&quot;fontSize&quot;</span>: <span class="hljs-string">&quot;40px&quot;</span>,<br>      <span class="hljs-attr">&quot;color&quot;</span>: <span class="hljs-string">&quot;red&quot;</span><br>    &#125;<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=red40px">点我运行一下</a></p>
+<h3 id="弹幕-id"><a href="#弹幕-id" class="headerlink" title="弹幕 id"></a>弹幕 id</h3><p>弹幕的 id 用于标记某一条弹幕<br>id 的命名规则无任何要求，可以使用任意的字符串数字特殊符号，但使用<code>_LAST_</code>将会冲突</p>
+<p><code>_LAST_</code> 是一个特殊的指针 id，其始终指向其上一条弹幕，如果没有上一条，该 id 无效</p>
+<h4 id="id-的作用域"><a href="#id-的作用域" class="headerlink" title="id 的作用域"></a>id 的作用域</h4><p>id 仅在当前弹幕文件中有效，分批次发送的弹幕，其 id 的作用域不同<br>父级对象的 id 无法被子级引用，子级弹幕拥有直接的定义域</p>
+<h3 id="弹幕的继承"><a href="#弹幕的继承" class="headerlink" title="弹幕的继承"></a>弹幕的继承</h3><p>弹幕可以使用 <code>extends</code> 属性继承一个弹幕，被继承的弹幕需要使用 id 进行标记，也可以使用<code>_LAST_</code>来引用上一条弹幕</p>
+<p>被继承的弹幕，会继承父级弹幕的所有内容，可以对属性进行重写</p>
+<p>动画(<code>animations</code>)由于在存储方式上为一个数组，所以如果<code>aniamtions</code>重写之后，会覆盖全部动画</p>
+<p>这是一个继承的例子</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-attr">&quot;content&quot;</span>: <span class="hljs-string">&quot;A&quot;</span>,<br>    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;A&quot;</span>,<br>    <span class="hljs-attr">&quot;style&quot;</span>: &#123;<br>      <span class="hljs-attr">&quot;color&quot;</span>: <span class="hljs-string">&quot;red&quot;</span>,<br>      <span class="hljs-attr">&quot;fontSize&quot;</span>: <span class="hljs-string">&quot;100px&quot;</span><br>    &#125;<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">&quot;extends&quot;</span>: <span class="hljs-string">&quot;A&quot;</span>,<br>    <span class="hljs-attr">&quot;content&quot;</span>: <span class="hljs-string">&quot;B&quot;</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p>此处第二条弹幕继承了 id 为 <code>A</code> 的弹幕,他的颜色是 红色 大小是 100px</p>
+<h3 id="then-关键字"><a href="#then-关键字" class="headerlink" title="then 关键字"></a>then 关键字</h3><p>可以使用 then 关键字，引用一条弹幕，在这条引用的弹幕结束后展示弹幕，同样的，也可以使用 <code>_LAST_</code> 来引用上一条弹幕</p>
+<h3 id="delay-关键字"><a href="#delay-关键字" class="headerlink" title="delay 关键字"></a>delay 关键字</h3><p>delay 用于延迟播放一条弹幕，配合 then 属性有比较好的效果<br>但 delay 为负数时，表现为提前播放</p>
+<h3 id="弹幕动画"><a href="#弹幕动画" class="headerlink" title="弹幕动画"></a>弹幕动画</h3><p>弹幕动画使用 <code>animations</code> 属性定义（注意最后有个 s），动画列表使用数组表示。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;static&quot;</span>, <span class="hljs-comment">//动画类型</span><br>    <span class="hljs-attr">&quot;cubic&quot;</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], <span class="hljs-comment">//贝塞尔曲线,可选</span><br>    <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-number">1</span> <span class="hljs-comment">//弹幕的生存周期，可选，默认1000</span><br>    <span class="hljs-comment">//...弹幕内部属性</span><br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p>目前已经支持的基本动画类型有：</p>
+<table>
+<thead>
+<tr>
+<th>动画名称</th>
+<th>type 类型</th>
+<th>描述</th>
+<th>内部属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静止动画</td>
+<td>static</td>
+<td>静止在某个坐标一段时间</td>
+<td><code>x</code>,<code>y</code>,<code>z</code></td>
+</tr>
+<tr>
+<td>移动动画</td>
+<td>translate</td>
+<td>从一处移动到另一处</td>
+<td><code>path:&#123;x1,y1,z1,x2,y2,z2&#125;</code></td>
+</tr>
+<tr>
+<td>X 轴旋转</td>
+<td>rotateX</td>
+<td>沿着一个点绕 x 轴旋转一点角度</td>
+<td><code>origin:[x,y,z]</code>,<code>angle:&#123;start:number,end:number&#125;</code></td>
+</tr>
+<tr>
+<td>Y 轴旋转</td>
+<td>rotateY</td>
+<td>沿着一个点绕 y 轴旋转一点角度</td>
+<td><code>origin:[x,y,z]</code>,<code>angle:&#123;start:number,end:number&#125;</code></td>
+</tr>
+<tr>
+<td>Z 轴旋转</td>
+<td>rotateZ</td>
+<td>沿着一个点绕 z 轴旋转一点角度</td>
+<td><code>origin:[x,y,z]</code>,<code>angle:&#123;start:number,end:number&#125;</code></td>
+</tr>
+<tr>
+<td>缩放动画</td>
+<td>scale</td>
+<td>按照某个原点对弹幕经行缩放</td>
+<td><code>origin:[x,y,z]</code>,<code>scale:&#123;x1:number,y1:number,z1:number,x2:number,y2:number,z2:number&#125;</code></td>
+</tr>
+<tr>
+<td>透明度动画</td>
+<td>opacity</td>
+<td>从一个透明度变换成另一个透明度</td>
+<td><code>opacity:[o1,o2]</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>1.1.0 更新透明度动画</p>
+</blockquote>
+<p>目前支持的复杂动画类型有</p>
+<table>
+<thead>
+<tr>
+<th>动画名称</th>
+<th>type 类型</th>
+<th>描述</th>
+<th>内部属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组动画</td>
+<td>group</td>
+<td>组动画将多个基本动画放进一个组中，实现并行播放</td>
+<td><code>animations:[]</code></td>
+</tr>
+<tr>
+<td>列表动画</td>
+<td>list</td>
+<td>列表动画将对多个动画依次播放</td>
+<td><code>animations:[]</code></td>
+</tr>
+<tr>
+<td>重复动画</td>
+<td>repeat</td>
+<td>重复执行某个动画 n 次</td>
+<td><code>repeat:number</code>,<code>animations:[]</code></td>
+</tr>
+</tbody></table>
+<p>目前，所有的复制动画类型均可嵌套其他复杂动画类型，组成更复杂的动画</p>
+<p>例如，现在要实现一个基本的移动动画，我们依旧拿上一个弹幕作为例子，我们再此基础上加上 <code>animations</code> 属性：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  &#123;<br>    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;text&quot;</span>,<br>    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;content&quot;</span>: <span class="hljs-string">&quot;这是一段40像素的红色文本&quot;</span>,<br>    <span class="hljs-attr">&quot;style&quot;</span>: &#123;<br>      <span class="hljs-attr">&quot;fontSize&quot;</span>: <span class="hljs-string">&quot;40px&quot;</span>,<br>      <span class="hljs-attr">&quot;color&quot;</span>: <span class="hljs-string">&quot;red&quot;</span><br>    &#125;,<br>    <span class="hljs-attr">&quot;animations&quot;</span>: [<br>      &#123;<br>        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;translate&quot;</span>,<br>        <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-number">3000</span>,<br>        <span class="hljs-attr">&quot;path&quot;</span>: &#123;<br>          <span class="hljs-attr">&quot;x1&quot;</span>: <span class="hljs-number">100</span>,<br>          <span class="hljs-attr">&quot;y1&quot;</span>: <span class="hljs-number">100</span>,<br>          <span class="hljs-attr">&quot;x2&quot;</span>: <span class="hljs-number">1000</span>,<br>          <span class="hljs-attr">&quot;y2&quot;</span>: <span class="hljs-number">600</span><br>        &#125;<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;translate&quot;</span>,<br>        <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-number">3000</span>,<br>        <span class="hljs-attr">&quot;path&quot;</span>: &#123;<br>          <span class="hljs-attr">&quot;x2&quot;</span>: <span class="hljs-number">-100</span>,<br>          <span class="hljs-attr">&quot;y2&quot;</span>: <span class="hljs-number">-200</span><br>        &#125;<br>      &#125;<br>    ]<br>  &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=move">点我运行一下</a></p>
+<h3 id="子元素"><a href="#子元素" class="headerlink" title="子元素"></a>子元素</h3><p>子元素在 <code>childs</code> 属性内，内部内容为弹幕元素的数组，除了不能使用 <code>start</code> 属性,与上面讲的一致</p>
+<p>子元素会根据父元素进行定位操作</p>
+<h3 id="一些简单的动画示例"><a href="#一些简单的动画示例" class="headerlink" title="一些简单的动画示例"></a>一些简单的动画示例</h3><p><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html">带曲线动画的文字移动</a><br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=movecube">红色方块移动</a><br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=cuberrr">立方体旋转</a><br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/index.html?id=windows">Windows98 窗口(需要 1.1.3 以上版本)</a></p>
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2021/05/24/MfunsCDNDev/%E4%B8%80%E3%80%81%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84/">一、总体架构 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
+ el: '#Valine'
+ , appId: '6SB5OsciMQ5tkvTl0GyiUWmb-gzGzoHsz'
+ , appKey: 'DcEF8qgxKFUIhiYsvfNOhE2x'
+ , placeholder: '此条评论委托企鹅物流发送'
+})</script></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/"> Dr.ChenDoXiu</a></h1><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">8</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">7</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">5</span></div></section></div><div id="aside-block"><h1>INDEX</h1><div id="post-index"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%88%9E%E5%8F%B0"><span class="toc-number">1.2.</span> <span class="toc-text">舞台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">弹幕基本格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">弹幕类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.5.</span> <span class="toc-text">弹幕生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">弹幕的样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95-id"><span class="toc-number">1.7.</span> <span class="toc-text">弹幕 id</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#id-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.7.1.</span> <span class="toc-text">id 的作用域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">1.8.</span> <span class="toc-text">弹幕的继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#then-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.9.</span> <span class="toc-text">then 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delay-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.10.</span> <span class="toc-text">delay 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B9%E5%B9%95%E5%8A%A8%E7%94%BB"><span class="toc-number">1.11.</span> <span class="toc-text">弹幕动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%85%83%E7%B4%A0"><span class="toc-number">1.12.</span> <span class="toc-text">子元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A8%E7%94%BB%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.13.</span> <span class="toc-text">一些简单的动画示例</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">1970 to 2021</span></nobr><wbr><wbr><nobr>published with&nbsp;<a target="_blank" rel="noopener" href="http://hexo.io">Hexo&nbsp;</a></nobr><wbr><nobr>Theme&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight&nbsp;</a></nobr><wbr><nobr>by&nbsp;<a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><br><span id="busuanzi_container_site_pv" style="display:none">Site visited&nbsp;<span id="busuanzi_value_site_pv"></span><span>&nbsp;times</span></span><br><span id="busuanzi_container_site_uv" style="display:none">Total&nbsp;<span id="busuanzi_value_site_uv"></span><span>&nbsp;people</span></span></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/arknights.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script></body></html>
