@@ -10,7 +10,7 @@ category: 高级弹幕
 
 弹幕实验室地址：
 [弹幕实验室(已停止维护)](https://lab.meogirl.ml)
-[弹幕实验室(新版)](https://labv2.meogirl.ml)
+[弹幕实验室(新版)](https://labv2.moegirl.love/dist/)
 
 ## 入门
 
