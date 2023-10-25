@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>ChenDoXiu&#39;Blog</title>
+  <title>二、数据库的数据类型 | ChenDoXiu&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ChenDoXiu&#39;Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Access数据库的基本类型   类型 说明    文本 最大255个字符或数字，一个汉字占一个存储空间   备注 字段能够存储长达64000个字符的内容，不能对备注字段进行排序或索引，却可以对文本字段进行排序和索引   数字 何指定为数字数据类型的字型可以设置成“字节”、“整数”、“长整数”、“单精度数”、“双精度数”、“同步复制ID”、“小数”五种型。在Access中通常默认为“长整型”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二、数据库的数据类型">
+<meta property="og:url" content="http://example.com/2021/03/17/Access%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="ChenDoXiu&#39;Blog">
+<meta property="og:description" content="Access数据库的基本类型   类型 说明    文本 最大255个字符或数字，一个汉字占一个存储空间   备注 字段能够存储长达64000个字符的内容，不能对备注字段进行排序或索引，却可以对文本字段进行排序和索引   数字 何指定为数字数据类型的字型可以设置成“字节”、“整数”、“长整数”、“单精度数”、“双精度数”、“同步复制ID”、“小数”五种型。在Access中通常默认为“长整型”。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-25T16:01:14.719Z">
 <meta property="article:author" content="ChenDoXiu">
+<meta property="article:tag" content="access">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="ChenDoXiu'Blog" type="application/atom+xml">
@@ -71,115 +76,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-danmaku/Mfuns弹幕手册" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/10/danmaku/Mfuns%E5%BC%B9%E5%B9%95%E6%89%8B%E5%86%8C/" class="article-date">
-  <time class="dt-published" datetime="2021-06-10T16:00:00.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%AB%98%E7%BA%A7%E5%BC%B9%E5%B9%95/">高级弹幕</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/10/danmaku/Mfuns%E5%BC%B9%E5%B9%95%E6%89%8B%E5%86%8C/">Mfuns高级弹幕手册</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>文档当前版本 ：1.7.0beta</p>
-</blockquote>
-<p>弹幕实验室地址：<br><a target="_blank" rel="noopener" href="https://lab.meogirl.ml/">弹幕实验室(已停止维护)</a><br><a target="_blank" rel="noopener" href="https://labv2.moegirl.love/dist/">弹幕实验室(新版)</a></p>
-<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>Mfuns 的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：<a target="_blank" rel="noopener" href="https://www.runoob.com/json/json-syntax.html">菜鸟教程 - JSON 语法</a>。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/10/danmaku/Mfuns%E5%BC%B9%E5%B9%95%E6%89%8B%E5%86%8C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/10/danmaku/Mfuns%E5%BC%B9%E5%B9%95%E6%89%8B%E5%86%8C/" data-id="clo5y0r6w000524nxdec80u7b" data-title="Mfuns高级弹幕手册" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mfuns-%E9%AB%98%E7%BA%A7%E5%BC%B9%E5%B9%95/" rel="tag">mfuns,高级弹幕</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Access数据库/3-数据库的查询" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-18T16:00:00.000Z" itemprop="datePublished">2021-03-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Access%E5%A4%8D%E4%B9%A0/">Access复习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/">三、SQL的查询</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="关于分号"><a href="#关于分号" class="headerlink" title="关于分号"></a>关于分号</h2><blockquote>
-<p>一条SQL语句结束，结尾必须加分号 ( ; )</p>
-</blockquote>
-<p>如果在结尾没有加分号的话，一般认为该语句没有结束。</p>
-<p>正因如此，SQL语句可以换行增加可读性，不会产生语法错误。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/" data-id="clo5y0r6v000424nx66a6eedb" data-title="三、SQL的查询" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/access-sql/" rel="tag">access,sql</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Access数据库/2-数据库的数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Access数据库/2-数据库的数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/17/Access%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
   <time class="dt-published" datetime="2021-03-17T16:00:00.000Z" itemprop="datePublished">2021-03-18</time>
@@ -196,8 +93,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/17/Access%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">二、数据库的数据类型</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      二、数据库的数据类型
     </h1>
   
 
@@ -270,60 +167,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Access数据库/1-数据库基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/16/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="dt-published" datetime="2021-03-16T16:00:00.000Z" itemprop="datePublished">2021-03-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Access%E5%A4%8D%E4%B9%A0/">Access复习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2021/03/18/Access%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%9F%A5%E8%AF%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
         
+          三、SQL的查询
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/16/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">一、数据库基础</a>
-    </h1>
   
+    <a href="/2021/03/16/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">一、数据库基础</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h2><h3 id="数据和信息"><a href="#数据和信息" class="headerlink" title="数据和信息"></a>数据和信息</h3><p>信息是有用的数据，但数据不一定是信息</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/03/16/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/16/Access%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" data-id="clo5y0r6n000024nx0npx4lwo" data-title="一、数据库基础" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/access/" rel="tag">access</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
