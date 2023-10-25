@@ -15,7 +15,7 @@ category: 高级弹幕
 ## 入门
 
 Mfuns 的高级弹幕是由 JSON 格式组成，关于基本 JSON 格式语法，请参阅：[菜鸟教程 - JSON 语法](https://www.runoob.com/json/json-syntax.html)。
-
+<!-- more -->
 ###　文件格式
 
 弹幕文件是由 JSON 文件组成，基本的格式为：
